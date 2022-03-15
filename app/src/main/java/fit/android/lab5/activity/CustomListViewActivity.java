@@ -25,10 +25,10 @@ public class CustomListViewActivity extends AppCompatActivity {
         lstView = findViewById(R.id.idListViewDonut);
         listDonuts = new ArrayList<>();
 
-        listDonuts.add(new Donut(1, "Tasty Donut", "Spicy tasty donut family", 10));
-        listDonuts.add(new Donut(2, "Pink Donut", "Spicy tasty donut family", 20));
-        listDonuts.add(new Donut(3, "Floating Donut", "Spicy tasty donut family", 30));
-        listDonuts.add(new Donut(4, "Red Donut", "Spicy tasty donut family", 40));
+        listDonuts.add(new Donut(1, "Tasty Donut", "Spicy tasty donut family", 10, R.drawable.donut_yellow_1));
+        listDonuts.add(new Donut(2, "Pink Donut", "Spicy tasty donut family", 20, R.drawable.tasty_donut_1));
+        listDonuts.add(new Donut(3, "Floating Donut", "Spicy tasty donut family", 30, R.drawable.green_donut_1));
+        listDonuts.add(new Donut(4, "Red Donut", "Spicy tasty donut family", 40, R.drawable.donut_red_1));
 
         DonutAdapter adapter = new DonutAdapter(this, R.layout.item_donut_activity, listDonuts);
         lstView.setAdapter(adapter);

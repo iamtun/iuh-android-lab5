@@ -7,6 +7,15 @@ public class Donut {
     private String name;
     private String desc;
     private double price;
+    private int image;
+
+    public Donut(int id, String name, String desc, double price, int image) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.price = price;
+        this.image = image;
+    }
 
     public Donut(int id, String name, String desc, double price) {
         this.id = id;
@@ -47,8 +56,16 @@ public class Donut {
         this.price = price;
     }
 
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
     public String getFormatPrice() {
-        DecimalFormat df = new DecimalFormat("$ #.###.00");
+        DecimalFormat df = new DecimalFormat("$ #,###.00");
         return df.format(this.getPrice());
     }
 }

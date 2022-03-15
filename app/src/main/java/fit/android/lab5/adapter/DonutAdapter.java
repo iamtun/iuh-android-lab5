@@ -1,11 +1,14 @@
 package fit.android.lab5.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +18,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import java.util.List;
 
 import fit.android.lab5.R;
+import fit.android.lab5.activity.CustomListViewActivity;
+import fit.android.lab5.activity.DeTailDonutActivity;
 import fit.android.lab5.model.Donut;
 
 public class DonutAdapter extends BaseAdapter {
@@ -58,7 +63,7 @@ public class DonutAdapter extends BaseAdapter {
         TextView tvNameDonut = convertView.findViewById(R.id.tvNameDonut);
         TextView tvDescDonut = convertView.findViewById(R.id.tvDescDonut);
         TextView tvPrice = convertView.findViewById(R.id.tvPriceDonut);
-
+        ImageButton btnAdd = convertView.findViewById(R.id.imageButton);
         ConstraintLayout constraintLayout = convertView.findViewById(R.id.itemConStraintLayout);
         Donut donut = listDonuts.get(index);
 
@@ -66,32 +71,22 @@ public class DonutAdapter extends BaseAdapter {
             tvNameDonut.setText(donut.getName());
             tvDescDonut.setText(donut.getDesc());
             tvPrice.setText(donut.getFormatPrice());
-
-            int idDonut = donut.getId();
-
-            switch (idDonut) {
-                case 1: imgView.setImageResource(R.drawable.donut_yellow_1); break;
-                case 2: imgView.setImageResource(R.drawable.tasty_donut_1); break;
-                case 3: imgView.setImageResource(R.drawable.green_donut_1); break;
-                case 4: imgView.setImageResource(R.drawable.donut_red_1); break;
-            }
+            imgView.setImageResource(listDonuts.get(index).getImage());
         }
 
-        convertView.setOnClickListener( new View.OnClickListener() {
-
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, donut.getName(), Toast.LENGTH_SHORT).show();
-                indexSelected = index;
-                notifyDataSetChanged();
+                Intent in = new Intent(context, DeTailDonutActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("image", donut.getImage());
+                bundle.putString("name", donut.getName());
+                bundle.putString("price", donut.getFormatPrice());
+
+                in.putExtras(bundle);
+                context.startActivity(in);
             }
         });
-
-        if(indexSelected == index) {
-            constraintLayout.setBackgroundColor(Color.CYAN);
-        } else {
-            constraintLayout.setBackgroundColor(Color.WHITE);
-        }
 
         return convertView;
     }

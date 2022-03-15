@@ -8,10 +8,9 @@
 
     <ListView
         android:id="@+id/idListViewDonut"
-        android:layout_width="410dp"
-        android:layout_height="488dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="528dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +64,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Donut"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:backgroundTint="@color/gold"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
@@ -77,6 +79,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:text="Pink Donut"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/button"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintStart_toEndOf="@+id/button"
@@ -85,9 +90,12 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="107dp"
-        android:layout_height="wrap_content"
+        android:layout_width="112dp"
+        android:layout_height="52dp"
+        android:backgroundTint="@color/white"
         android:text="Floating"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toTopOf="@+id/button2" />
