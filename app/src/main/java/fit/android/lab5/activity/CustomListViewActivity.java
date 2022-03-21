@@ -1,7 +1,11 @@
 package fit.android.lab5.activity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,5 +36,33 @@ public class CustomListViewActivity extends AppCompatActivity {
 
         DonutAdapter adapter = new DonutAdapter(this, R.layout.item_donut_activity, listDonuts);
         lstView.setAdapter(adapter);
+
+        //Find Item
+        EditText findInput = findViewById(R.id.editTextTextPersonName);
+        findInput.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                ArrayList<Donut> listDounutFind = new ArrayList<>();
+                if(keyEvent.getAction() == keyEvent.ACTION_DOWN && keyEvent.getKeyCode() == keyEvent.KEYCODE_ENTER) {
+                    String dounutName = findInput.getText().toString();
+                    if(dounutName.trim().equals("")) {
+                        Toast.makeText(CustomListViewActivity.this, "Vui lòng nhập tên bánh để tìm", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }else {
+                        for(Donut item : listDonuts) {
+                            if(item.getName().equals(dounutName)) {
+                                listDounutFind.add(item);
+                            }
+                        }
+                    }
+
+                    DonutAdapter adapter = new DonutAdapter(CustomListViewActivity.this, R.layout.item_donut_activity, listDounutFind);
+                    lstView.setAdapter(adapter);
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 }
